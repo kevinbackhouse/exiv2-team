@@ -93,4 +93,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.EXIV2WEB }}/html
           publish_branch: gh-pages
-          cname: web2.exiv2.org
+          cname: exiv2.org
