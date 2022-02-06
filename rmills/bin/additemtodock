@@ -38,7 +38,7 @@
 
 function check_arguments {
 
-    if [ "$num_argumnets" -lt "1" ] ; then
+    if [ "$num_arguments" -lt "1" ] ; then
         echo "WARNING ! : No argument provided. Nothing added to the Dock."
         echo "            Usage : additemtodock /Applications/Safari.app"
         
@@ -150,7 +150,7 @@ function check_is_application {
 ########### LOGIC AND EXECUTION ###########
 
 # General Settings
-num_argumnets=$#
+num_arguments=$#
 exit_status=0
 
 # Check we are good to go
