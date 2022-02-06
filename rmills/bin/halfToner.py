@@ -227,9 +227,9 @@ def helpSection():
  -p\t Sets the divisional ammount to create the new smaller res files. The images will be divided by this number.
  -t\t CURRENTLY NOT IMPLEMENTED: is intended to maintain the file format of the original files -otherwise will default to jpeg.
  -w\t Sets the target proxy Res so that the larger dimension is 640 - which is an ideal size for email and web work. 
- 	 If images are smaller than this res they will not be alterred.
+ 	 If images are smaller than this res they will not be altered.
  -1\t Sets the target proxy Res so that the lerger dimension is 1024 - for a 1k approximation. 
- 	 If images are smaller than this res they will not be alterred.
+ 	 If images are smaller than this res they will not be altered.
 	'''
 	
 if __name__ == "__main__":
