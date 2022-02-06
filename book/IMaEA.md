@@ -1587,7 +1587,7 @@ JPEG-XL is the only format discussed in this book which has two file layouts.  T
 ...book $ 
 ```
 
-The second format is **JXL/BMFF** and is bmff based.  In correspondance with the authors of the JPEG-XL standard, they explained: _We are planning to add an option to do Brotli-compressed versions of exif and xmp metadata, though maybe it's a bit early to add support for that since JPEG XL Part 2 (which defines these things) is not finalized yet._
+The second format is **JXL/BMFF** and is bmff based.  In correspondence with the authors of the JPEG-XL standard, they explained: _We are planning to add an option to do Brotli-compressed versions of exif and xmp metadata, though maybe it's a bit early to add support for that since JPEG XL Part 2 (which defines these things) is not finalized yet._
 
 ```bash
 ...book $ dmpf count=20 files/Reagan.jxl 
