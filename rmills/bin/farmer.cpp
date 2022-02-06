@@ -394,7 +394,7 @@ DWORD WINAPI mainThread(void* /*pParam*/)
 					}
 				}
 			}
-			// if the bufffer's full and we're still searching - give up!
+			// if the buffer's full and we're still searching - give up!
 			// this handles the possibility that there are no headers
 			if ( bSearching && buff_l-end < 10 ) {
 				bSearching = false ;
