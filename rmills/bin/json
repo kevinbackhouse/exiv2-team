@@ -567,7 +567,7 @@ function chunkEmitter(opts) {
              *
              * One solution would be full stream parsing of objects a la
              * <https://github.com/creationix/jsonparse>. This would nicely
-             * also remove the artibrary requirement that the input stream be
+             * also remove the arbitrary requirement that the input stream be
              * newline separated. jsonparse apparently has some issues tho, so
              * I don't want to use it right now. It also isn't *small* so not
              * sure I want to inline it (`json` doesn't have external deps).
