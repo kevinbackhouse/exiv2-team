@@ -2439,7 +2439,7 @@ For the moment, take comfort that both are very similar.  By the end of the book
 <div id="XMP"/>
 ##2.2 XMP Metadata
 
-XMP is an Adobe initiative to provide a comprensive and eXtendable Metadata frame to a wide range of documents.
+XMP is an Adobe initiative to provide a comprehensive and eXtendable Metadata frame to a wide range of documents.
 
 You can create Bag, Seq or Struct of metadata.  An "XmpBag" is a set of key/value pairs and are represented by XML attributes.  An "XmpSeq" is a an array of metadata similar to a JavaScript or Python Array.  It's represented by an XML list and can be accessed by index.  An XmpStruct is a set of keys to trees of metadata rathen like a JavaScript or Python Object or Python.
 
