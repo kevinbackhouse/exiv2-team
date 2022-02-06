@@ -576,7 +576,7 @@ Options:
   -botm <#>        : Number of lines for bottom margin (def: 7)
   -cgiurl <url>    : URL for linking to other manpages
   -cgiurlexp <url> : Perl expression URL for linking to other manpages
-  -compress        : Compress consective blank lines
+  -compress        : Compress consecutive blank lines
   -headmap <file>  : Filename of user section head map file
   -help            : This message
   -k               : Process a keyword search result
