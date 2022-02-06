@@ -23,9 +23,9 @@ bomb() {
 }
 
 jenkins="$1"
-if [ -z   "$jenkins" ]; then jenkins=jenkins.war                         ; fi
-if [ ! -e "$jenkins" ]; then error $jenkins does not exist               ; fi
-if [ "$EUID" != 0    ]; then error "ROOT priviledges required to run $0" ; fi
+if [ -z   "$jenkins" ]; then jenkins=jenkins.war                        ; fi
+if [ ! -e "$jenkins" ]; then error $jenkins does not exist              ; fi
+if [ "$EUID" != 0    ]; then error "ROOT privileges required to run $0" ; fi
 
 launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
 cp $jenkins /Applications/Jenkins/jenkins.war 
