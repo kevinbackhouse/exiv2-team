@@ -719,7 +719,7 @@ sub print_options() {
   # meta
   print "returncode    = ", $returncode    , "\n";
   print "configfile    = ", $configfile    , "\n";
-  # basiscs
+  # basics
   print "syncdirection = ", $syncdirection , "\n";
   print "localdir      = ", $localdir      , "\n";
   # FTP stuff
