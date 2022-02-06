@@ -1577,7 +1577,7 @@ More information about binary decoding in tvisitor.cpp is discussed in [3.5 Repo
 <div id="JXL"/>
 ### JPEG-XL Format
 
-The JXL format is the current contendor to replace JPEG/GIF as the most popular image format.  At the time of writing (2021), it is too early to say if it will reach the goal that eluded PNG, JP2 and WebP.  There is a discussion of this format here:  [https://github.com/Exiv2/exiv2/issues/1503](https://github.com/Exiv2/exiv2/issues/1503).
+The JXL format is the current contender to replace JPEG/GIF as the most popular image format.  At the time of writing (2021), it is too early to say if it will reach the goal that eluded PNG, JP2 and WebP.  There is a discussion of this format here:  [https://github.com/Exiv2/exiv2/issues/1503](https://github.com/Exiv2/exiv2/issues/1503).
 
 JPEG-XL is the only format discussed in this book which has two file layouts.  The first format is _**naked codestream JXL**_.  The first two bytes are 0xff0a.  I have no further information about this stream.  It does not contain Exif, IPTC or XML data.  However it does contain the image and related data such as size, orientation and color profile/handler.
 
