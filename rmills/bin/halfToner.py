@@ -224,7 +224,7 @@ def helpSection():
 	print "\n HELP / INSTRUCTIONS: \n"
 	print '''
  FLAGS:
- -p\t Sets the divisional ammount to create the new smaller res files. The images will be divided by this number.
+ -p\t Sets the divisional amount to create the new smaller res files. The images will be divided by this number.
  -t\t CURRENTLY NOT IMPLEMENTED: is intended to maintain the file format of the original files -otherwise will default to jpeg.
  -w\t Sets the target proxy Res so that the larger dimension is 640 - which is an ideal size for email and web work. 
  	 If images are smaller than this res they will not be altered.
