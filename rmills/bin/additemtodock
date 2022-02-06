@@ -112,7 +112,7 @@ function add_other {
     #Adding Other
     if [ -d "${item2add}" ] || [ -f "${item2add}" ] || [ -L "${item2add}" ]; then
 
-	# Caclulate the number of periods in the item name
+	# Calculate the number of periods in the item name
 	basename=`basename "${item2add}"`
 	num_periods=`echo "${basename}" | awk -F "." '{ print NF }'`
 	(( num_periods-- ))
