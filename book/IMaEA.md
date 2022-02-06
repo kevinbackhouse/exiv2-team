@@ -3386,7 +3386,7 @@ void IFD::accept(Visitor& visitor,const TagDict& tagDict/*=tiffDict*/)
 
         if ( nEntries > 500 ) Error(kerTiffDirectoryTooLarge,nEntries);
         visitor.visitDirBegin(image_,nEntries);
-        uint64_t a0 = start + (bigtiff?8:2) + nEntries * entry.size_; // addresss to read next
+        uint64_t a0 = start + (bigtiff?8:2) + nEntries * entry.size_; // address to read next
 
         // Run along the directory
         for ( uint64_t i = 0 ; i < nEntries ; i ++ ) {
