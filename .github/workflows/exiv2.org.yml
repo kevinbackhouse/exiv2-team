@@ -11,8 +11,9 @@ on:
 
 jobs:
   deploy:
-    env:
-      EXIV2REF: 0.27-maintenance
+    strategy:
+      matrix:
+        EXIV2TAG: [v0.27.5, v0.27.5-RC3]
     runs-on: ubuntu-20.04
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
@@ -27,7 +28,7 @@ jobs:
         with:
           repository: Exiv2/exiv2
           path: exiv2
-          ref: ${{ env.EXIV2REF }}
+          ref: ${{ matrix.EXIV2TAG }}
 
       - name: Set environment variables
         run: |
@@ -52,6 +53,8 @@ jobs:
 
       - name: Build exiv2.org static content
         run: |
+          echo -n ${{ matrix.EXIV2TAG }} | sed -e 's,-RC\([0-9]\),.\1,g' -e 's,v,,g' > $EXIV2WEB/var/__version__
+
           # Populate builds and releases
           python3 -m pip install PyGithub
           python3 <<EOF | grep -v sha256 | grep -v nightly | grep -v untagged > /tmp/artifacts.txt
@@ -86,11 +89,25 @@ jobs:
           # Cleanup
           rm -fr /tmp/artifacts.txt $EXIV2WEB/html/releases $EXIV2WEB/html/builds
 
+      - name: Add CSS marker if pre-release
+        if: contains(matrix.EXIV2TAG, 'RC')
+        run: sed -E '/PreRelease.png/s/\/\*|\*\//  /g' -i $EXIV2WEB/html/include/exiv2.css
+
       - name: Deploy static content for exiv2.org
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: github.ref == 'refs/heads/main' && !contains(matrix.EXIV2TAG, 'RC')
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.EXIV2WEB }}/html
           publish_branch: gh-pages
           cname: exiv2.org
+
+      - name: Deploy static content for pre-release.exiv2.org
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main' && contains(matrix.EXIV2TAG, 'RC')
+        with:
+          deploy_key: ${{ secrets.RC_DEPLOY_KEY }}
+          external_repository: Exiv2/pre-release.exiv2.org
+          publish_dir: ${{ env.EXIV2WEB }}/html
+          publish_branch: gh-pages
+          cname: pre-release.exiv2.org
