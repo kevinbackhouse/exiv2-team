@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import subprocess                     # to execute exiv2
+
+def searchTarget(database,word):
+    search(database,cmd)
+
+
+def main(argv):
+    """main - main program of course"""
+    database     = os.path.expanduser('~/clanmills/photos.db')
+    table        = 'photos'
+    verb         = 'SELECT'
+    COLS         = ' *'
+    ORDER        = ' ORDER by taken DESC'
+    cols         = COLS
+    order        = ORDER
+    dry          = False
+    
+    for target in argv[1:]:
+        try:
+            cmd=''
+            if target[0] =='-':
+                target='-%s' % target.split('-')[-1:][0]   # -----option => -option
+            if target in   ['-photos','-albums']:
+                table = target[1:]
+            elif target in ['-schema','-table']:
+                cmd   = 'select sql from sqlite_schema where name = %r;' % table
+            elif target in ['-delete','-select']:
+                verb=target[1:].upper()
+                cols  = COLS  if verb == 'SELECT' else ''
+                order = ORDER if verb == 'SELECT' else ''
+            elif target in ['-dry','-wet']:
+                dry   = target == '-dry'
+            else:
+                t   = '%' + target + '%'
+                if table == 'photos':
+                    cmd = '%s%s FROM photos WHERE title  LIKE %r OR taken LIKE %r OR path LIKE %r%s;' % (verb,cols,t,t,t,order)
+                elif table=='albums':
+                    cmd = '%s%s FROM albums WHERE photos LIKE %r OR taken LIKE %r OR gid  LIKE %r%s;' % (verb,cols,t,t,t,order)
+            if cmd:
+                cmd = 'sqlite3 -box %r %r' % (database,cmd)
+                print(cmd)
+                if not dry:
+                    subprocess.run(cmd, shell=True,stderr=subprocess.STDOUT)
+        except Exception as error:
+            print('*** Error ***', error)
+            pass
+        
+if __name__ == '__main__':
+    argc     = len(sys.argv)
+    if argc < 2:
+        help  = """usage: %s { string|date|-OPTION }+
+OPTION: photos albums schema select delete dry wet""" % sys.argv[0]
+        print(help)
+    else:
+        main(sys.argv)
+
+# That's all Folks!
+##
+

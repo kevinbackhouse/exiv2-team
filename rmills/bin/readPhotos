@@ -1,0 +1,247 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import subprocess                     # to execute exiv2
+import sqlite3                        # to manipulate database
+from   xml.dom.minidom import *       # to manipulate photos.txt
+
+def setDomAttribute(dom,name,value):
+    if value:
+        dom.setAttribute(name,value)
+
+def database_get(db,cmd,echo=False):
+    result=''
+    try:
+        value = db.cursor().execute(cmd).fetchall()
+        if len(value):
+            result   = value[0][0]
+            if echo:
+                print(cmd,"=>",result)
+        else:
+            if echo:
+                print(cmd)
+    except Exception:
+        pass
+    return result
+
+# cmd "SELECT photos from albums where gid = 'https://lh3.googleusercontent.com/5RFZpfEWUD37_Hl1RjmPCxk3Hu2H73HPPVVxjoPyDc9R3oxwPpIz6Wrf5DVXjluf8nZsreB1sGRk4cHdkuvBkUwAxSCXpQ3rX-bM9Ys4CGTMzR6p9PAfjtWThm7KTJI8kzJkWoruk2I=w1920-h1080;"
+def database_array(db,cmd,echo=False):
+    result='[]'
+    try:
+        if echo:
+            print('database_array cmd',cmd)
+        result = db.cursor().execute(cmd).fetchall()
+        if echo:
+            print('database_array value',value)
+    except Exception:
+        pass
+    return result
+
+def database_do(db,cmd,echo=False):
+    try:
+        if echo:
+            print(cmd)
+        db.cursor().execute(cmd).fetchall()
+    except Exception:
+        pass
+
+def metadata(key,path,echo=False):
+    result=''
+    cmd = 'exiv2 -K %s -Pv %r' % (key,path)
+    if echo:
+        print(cmd)
+    try:    
+        stdout = subprocess.check_output(cmd, shell=True).decode('utf-8')
+        result = str(stdout).rstrip() 
+    except Exception:
+        pass
+    return result
+    
+def rewritePhotosTxt(db,target,echo=False):
+    if echo:
+        print('rewritePhotosTxt target =',target)
+    f=False
+    try: # parseString can throw
+        dom        = parseString('<objects>'+open(target, "r").read()+'</objects>')
+        objects    = dom.getElementsByTagName("object")    
+        clanmills  = os.path.expanduser('~/clanmills')
+        photos     = os.path.abspath(target)[len(clanmills):]
+        f=open(target,"w")
+    
+        for object in range(0,len(objects)):
+            object = objects[object]
+            doc    = getDOMImplementation().createDocument(None,  'objects' , None)             
+            gid    = object.getAttribute('data')
+            taken  = database_get(db,'SELECT taken FROM albums WHERE gid = %r;'   % gid,echo=echo)
+            title  = database_get(db,'SELECT title FROM photos WHERE taken = %r;' % taken,echo=echo)
+            if echo:
+                print('gid =',gid,'taken,title =',taken,title)
+            dom_object = doc.createElement('object')
+            setDomAttribute(dom_object,'data' ,gid )
+            setDomAttribute(dom_object,'title',title)
+            setDomAttribute(dom_object,'taken',taken)
+            dom_object.appendChild(doc.createTextNode(''))
+            print(dom_object.toxml(),file=f)
+    except Exception as error: # problem with dom
+        print("***Error: ",error,file=sys.stderr)
+        pass
+    if f:
+        f.close()
+
+def updateDatabase(db,path,echo=False):
+    global globalAlbums
+    photos=os.path.expanduser('~/Pictures/Photos/')
+    path     = os.path.abspath(path)                       # /Users/rmills/Pictures/Photos/2015/Stonehenge/DSC_7159.jpg
+    stub     = os.path.splitext(os.path.basename(path))[0] #                                               DSC_7159
+    url      = path[len(photos)-len(path)-1:]              #                              /2015/Stonehenge/DSC_7159.jpg
+    taken    = metadata('Exif.Photo.DateTimeOriginal',path) 
+    
+    title    = metadata('Iptc.Application2.ObjectName'  ,path) # "Title" in ACDC and Adobe
+    if not title:
+        title= metadata('Iptc.Application2.Caption'     ,path) # Picasa!
+    if not title:
+        title= stub
+    if taken: # and (taken != db_taken or title != db_title):
+        for album in database_array(db,'SELECT photos from albums WHERE taken = %r;' % taken,echo=echo):
+            album=os.path.join(os.path.expanduser('~/clanmills/'),album[0][1:])
+            globalAlbums.add(album)
+            print('updateDatabase path=',path,'taken=',taken,'album',album,'title=',title)
+        database_do(db,'DELETE FROM photos WHERE taken = %r;' %      taken       ,echo=echo)
+        database_do(db,'INSERT INTO photos Values(%r,%r,%r);' % (url,taken,title),echo=echo)
+
+def is_image(path):
+    result = 1
+    try:
+        result = subprocess.run('exiv2 %r' % path, shell=True,stderr=subprocess.STDOUT,stdout=subprocess.DEVNULL).returncode
+    except Exception:
+        pass
+    return result==0
+
+def is_photosTxt(path):
+    result = False
+    try:
+        line=open(path,'r').readlines()[0]
+        result=line.find('<object ') != -1
+
+    except Exception:
+        pass
+    return result
+
+def readPhotosTxt(db,target,echo=True):
+    print("readPhotosTxt =",target)
+    try: # parseString can throw
+        dom        = parseString('<objects>'+open(target, "r").read()+'</objects>')
+        objects    = dom.getElementsByTagName("object")    
+        clanmills  = os.path.expanduser('~/clanmills')
+        photos     = os.path.abspath(target)[len(clanmills):]
+    
+        for object in range(0,len(objects)):
+            object = objects[object]
+            gid    = object.getAttribute('data')
+            taken  = object.getAttribute('taken')
+            if not taken:
+                taken=database_get(db,'SELECT taken FROM albums WHERE gid = %r;' % gid,echo)
+            if not taken:
+                index  = gid.find('=')
+                url=gid[0:index]+'=d' if index>=0 else gid
+                taken = metadata('Exif.Photo.DateTimeOriginal',url)
+            print("readPhotos taken =",taken)
+            database_do(db,'INSERT or REPLACE INTO albums VALUES(%r,%r,%r);' % (gid,photos,taken))
+        rewritePhotosTxt(db,target)
+    except Exception as error: # problem with dom
+        print("***Error: ",error,file=sys.stderr)
+        pass
+
+def readFile(db,filename):
+    if is_image(filename):
+        updateDatabase(db,filename)
+    elif is_photosTxt(filename):
+        readPhotosTxt(db,filename)
+
+def main(argv):
+    """main - main program of course"""
+    
+    database     = os.path.expanduser('~/clanmills/photos.db')
+    echo=False;
+    global globalAlbums
+    globalAlbums = set()
+
+    if 1:
+        db  = sqlite3.connect(database)
+        database_do(db,'CREATE TABLE if NOT EXISTS photos '
+        '(  path  TEXT UNIQUE PRIMARY KEY '
+        ',  taken TEXT '
+        ',  title TEXT '
+        ');',echo=False)
+        database_do(db, 'CREATE TABLE if NOT EXISTS albums '
+        '( gid    TEXT '
+        ', photos TEXT '
+        ', taken  TEXT '
+        ', UNIQUE(gid,photos)'
+        ');',echo=False)
+        db.commit()
+        db.close()
+    
+    for target in argv[1:]:
+        db          = sqlite3.connect(database)
+        t0          = target
+        target      = os.path.expanduser(target)
+
+        # tweak the target (to simplify using this script)
+        if not os.path.isdir(target) and target[0] == '/':
+            t1 = os.path.join(os.path.expanduser('~/Pictures/Photos/'),target[1:]) # /Users/rmills/Pictures/Photos/2003/EastCoast/Smithsonian/Zero.jpg
+            if os.path.isdir(t1) or is_image(t1):
+                target=t1
+
+        if os.path.isdir(target):
+            t1 = os.path.join(target,'photos.txt')
+            if os.path.isfile(t1):
+                target=t1
+
+        status = 'directory' if os.path.isdir(target)  else \
+                 'file'      if os.path.isfile(target) else \
+                 'unknown'
+        
+        print('*** Unknown target ',t0,file=sys.stderr) if status == 'unknown' else print('target',t0, status,'('+target+')' )
+
+        if status=='file':
+            readFile(db,target)
+
+        # Read every image in the directory and update database
+        elif status=='directory':
+            for (path, directories, files) in os.walk(target, topdown=True):
+                path=os.path.abspath(path)
+                for filename in files:
+                    readFile(db,os.path.abspath(os.path.join(path,filename)))
+        db.commit()
+        db.close()
+    # end for target
+    
+    if len(globalAlbums):
+        db   = sqlite3.connect(database)
+        clanmills  = os.path.expanduser('~/clanmills')
+        for album in globalAlbums:
+            rewritePhotosTxt(db,album,echo=echo)
+            sync = os.path.join(clanmills,'sync') + ' %r' % album[len(clanmills)+1:]
+            try:
+                print(sync)
+                result = subprocess.run(sync, shell=True,stderr=subprocess.STDOUT)
+            except Exception as error:
+                print("***Error: ",error,file=sys.stderr)
+                pass
+        db.commit()
+        db.close()
+
+    return 0
+    
+if __name__ == '__main__':
+    argc     = len(sys.argv)
+    if argc < 2:
+        print('usage: %s {photos.txt | directory}+' % sys.argv[0])
+    else:
+        main(sys.argv)
+
+# That's all Folks!
+##
+
