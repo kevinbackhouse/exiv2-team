@@ -468,7 +468,7 @@ alias home='cd ${EXIV2HOME}'
 alias builds='cd ${EXIV2BUILDS}'
 alias builder='cd ${EXIV2BUILDER}'
 alias testfiles='cd /Users/Shared/Jenkins/Home/userContent/testfiles'
-alias book='cd ~/gnu/exiv2/team/book'
+alias book='cd ~/gnu/github/exiv2/team.exiv2.org/book'
 alias bmff='cd ~/gnu/github/exiv2/bmff'
 
 ##
