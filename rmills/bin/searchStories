@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import argparse
+import subprocess
+
+from whoosh.qparser import QueryParser
+from whoosh         import scoring
+from whoosh.index   import open_dir
+
+stories   = 'storyDatabase'
+clanmills = os.path.expanduser('~/clanmills')
+os.chdir(clanmills)
+
+parser = argparse.ArgumentParser(description='Search stories database')
+parser.add_argument('query'    ,                              help='search for this string',nargs='?')
+parser.add_argument('--order'  ,'-o', choices=['any','year','topic'], help='order of output (NIY)')
+parser.add_argument('--down'   ,'-d', action ='store_true',default=False)
+parser.add_argument('--show'   ,'-s', type   =int, default=0,    help='show matches in browser (-1 for all)')
+parser.add_argument('--limit'  ,'-l', type   =int, default=10,   help='limit number of stories')
+parser.add_argument('--verbose','-v', action='store_true',       help='print command summary')
+args = vars(parser.parse_args())
+
+if args['verbose']:
+    print(args)
+
+arg = 0
+if args['query']:
+    if os.getcwd() == clanmills and os.path.isdir(stories):
+        # text database
+        ix          = open_dir(stories)
+        searcher    = ix.searcher()
+        # query
+        qp          = QueryParser("content", schema=ix.schema)
+        q           = qp.parse(args['query'])
+
+        # search
+        results     = searcher.search(q,limit=args['limit' ]) 
+        cmds=[]
+        show=args['show']
+        for result in results:
+            result=searcher.stored_fields(result.docnum)['title']
+            arg+=1
+            cmd = 'open %r' % 'http://clanmills'+result
+            cmds.insert(0,cmd)
+            if arg ==show :
+                subprocess.run(cmd, shell=True,stderr=subprocess.STDOUT,stdout=subprocess.DEVNULL).returncode
+            elif show < 1:
+                print('%3d:' % arg,result)
+        if show < 0:    
+            for cmd in cmds:
+                subprocess.run(cmd, shell=True,stderr=subprocess.STDOUT,stdout=subprocess.DEVNULL).returncode
+    else:
+        print('*** you only execute this script in %s and %s must exist ***' % (clanmills,stories),file=sys.stderr)
+else:
+    parser.print_help()
+    
+# That's all Folks!
+##
