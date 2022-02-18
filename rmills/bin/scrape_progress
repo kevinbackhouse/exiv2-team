@@ -4,24 +4,36 @@ A=0   # albums
 T=0   # todo
 F='%-11s %4d    %4d  %4d %4d\n'
 echo 'Directory Albums Stories total TODO'
-for y in {2004..2021} ; do
+for y in {2002..2021} ; do
 	i=$(find $y -name Images    -type d | wc -l)  # Images
 	s=$(find $y -name story.txt -type f | wc -l)  # Stories
 	A=$((A+i+s))
 	T=$((T+i))
     printf "$F" $y $i $s $A $T
 done
-    o=90
+    o=$(find . -name "default-*.shtml" -maxdepth 1 | wc -l) # default-2004-01.shtml etc
+    O=$(wc -l default-*.shtml | grep ' 1 ' | wc -l) #              location scripts
+    o=$((o + 0 -O))  # Others.  Articles, Travel, Family etc. LESS location scripts
     s=0
     i=$((i+o))
     T=$((T+o))
     A=$((A+o))
     printf "$F" Others $i $s $A $T
-	i=$(find Homepages -name "*.inc"     | grep -v pages.inc | wc -l)  # Images
-	s=$(find Homepages -name "story.txt" |                     wc -l)  # Images
-    T=$((T+i+s))
-    A=$((A+i+s))
-    printf "$F" Homepages $i $s $A $T
+    S=0
+    I=0
+    pushd Homepages >/dev/null
+    for year in {2002..2007} ;do 
+        if [ -d $year ]; then
+            i=$(find $year -name "*.inc"     | grep -v pages.inc | wc -l)  # Images
+            s=$(find $year -name "story.txt" | grep -v Albums    | wc -l)  # Stories
+            I=$((I+i))
+            S=$((S+s))
+	    fi
+    done
+    popd	    >/dev/null
+    T=$((T+I+S))
+    A=$((A+I+S))
+    printf "$F" Homepages $I $S $A $T
 
 
 

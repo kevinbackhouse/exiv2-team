@@ -1,39 +1,89 @@
 #!/usr/bin/env bash
 
+syntax() {
+    echo "syntax: $0 { option | --select value }+ directory"
+    echo "option: --help | --rm | --verbose | --edit | --dryrun | --homepage"
+    echo "select: pages | next | date "
+}
+bomb() {
+    echo "*** $1 requires an argument ***" >&2
+    exit 1
+}
 echoerr() { echo "$@" 1>&2; exit 1; }
 
-if [ "$#" != "1" ]; then echoerr "usage: $0 directory"   ; fi
-if [ ! -d "$1"   ]; then echoerr "$1 is not a directory" ; fi
+##
+# parse command line
+this="$0"
+if [ "$#" == "0" ]; then help=1; fi
+updated=$(now)               # updated
+objects=photos.txt
+T=~/clanmills/2021/Template  # Template
+d=default.shtml              # default file
+photos=''
+home='/albumtail.inc'
 
-cd $1
+while [ "$#" != "0" ]; do
+    arg="$1"
+    shift
+    case "$arg" in
+      --edit)        edit=1               ;;
+      -h|--help|-\?) help=1               ;;
+      --verbose)     verbose=--verbose    ;;
+      --dryrun)      dryrun=1             ;;
+      --homepage)    hompage='--homepage' ;;
+      --pages)       if [ $# -gt 0 ]; then pages="$1"    ; shift; else bomb $arg ; fi ;;
+      --prev)        if [ $# -gt 0 ]; then prev="$1"     ; shift; else bomb $arg ; fi ;;
+      --next)        if [ $# -gt 0 ]; then next="$1"     ; shift; else bomb $arg ; fi ;;
+      --date)        if [ $# -gt 0 ]; then date="$1"     ; shift; else bomb $arg ; fi ;;
+      *)             if [ -z "$dir" ]; then
+                         dir="$arg" 
+                     else
+                        echo "*** invalid option: $arg ***" 1>&2
+                        help=1
+                     fi ;;
+    esac
+done
+if [ -e $pages ]; then
+    pages=$(realpath $pages)
+    clanmills=$(realpath ~/clanmills)
+    pages=${pages:${#clanmills}}
+    echo "pages = $pages"
+fi
 
-dryrun=0
-objects=objects.txt
-if [ -e photos.txt ]; then objects=photos.txt; fi
-pages=$(grep --quiet 'pages.inc' default.shtml)
-if [ ! -z "$pages"]; then pages="--pages \"$pages\"" ; fi
+if [ ! -z $help ]; then syntax ; exit 1; fi
 
-grep --quiet 'buildPage()' default.shtml
-if [ "$?" == "0" ]; then
-    leaf=$(basename $PWD)
-    title=$(grep title default.shtml  | cut -d"'" -f 2)
-    if [ ${title: -1} == '"' ]; then
-        title=$(grep title default.shtml  | cut -d'"' -f 2)
-    fi
-    photos=$(grep https default.shtml  | cut -d"'" -f 2)
-    updated=$(grep updated default.shtml  | cut -d"'" -f 2)
-    echo "*** scrape_new" "$leaf" --rm --photos "$photos" --title "$title" --updated "$updated" $pages "***"
+if [ ! -d "$dir"                ]; then echoerr "$dir is not a directory"           ; fi
+if [ ! -e "$dir/default.shtml"  ]; then echoerr "$dir/default.shtml does not exist" ; fi
+
+# ----------------------------------
+pushd $dir >/dev/null
+if [   -z $pages   ]; then pages=$(grep --quiet 'pages.inc' default.shtml) ; fi
+if [ ! -z $pages   ]; then pages="--pages $pages"                          ; fi
+if [ ! -z $date    ]; then date="--date $date"                             ; fi
+if [ ! -z $prev    ]; then prev="--prev $prev"                             ; fi
+if [ ! -z $next    ]; then pages="--next $next"                            ; fi
+
+title=$(grep title default.shtml  | cut -d"'" -f 2)
+if [ ${title: -1} == '"' ]; then
+    title=$(grep title default.shtml  | cut -d'"' -f 2)
+fi
+                           photos=$(grep https default.shtml     | cut -d"'" -f 4)
+if [ -z $photos    ]; then photos=$(grep https default.shtml     | cut -d"'" -f 2) ; fi
+                           updated=$(grep updated default.shtml  | cut -d"'" -f 4)
+if [ -z "$updated" ]; then updated=$(grep updated default.shtml  | cut -d"'" -f 2) ; fi
+popd >/dev/null
+# ----------------------------------
+
+if [ ! -z $verbose ]; then args scrape_new --photos "$photos" --title "$title" --updated "$updated" $pages --rm $homepage "$dir" ; fi
+if [ -z $dryrun ]; then
     # save the good data
-    if [ "$dryrun" != "1" ]; then
-        for i in story.txt $objects ; do mv $i /tmp; done
-        pushd .. 2>/dev/null
-            scrape_new "$leaf" --photos "$photos" --title "$title" --updated "$updated" $pages --rm
-            mv /tmp/story.txt   $leaf
-            mv /tmp/$objects $leaf/photos.txt
-        popd 2>/dev/null
-    fi
-    echo "$photos" | pbcopy
-    bbedit photos.txt
+    if [ -e "$dir/photos.txt" ]; then objects=photos.txt ; else objects=objects.txt ; fi
+    cp -v               "$dir/story.txt" /tmp
+    cp -v               "$dir/$objects"  /tmp/photos.txt
+    scrape_new          $verbose --photos "$photos" --title "$title" --updated "$updated" $pages --rm  $homepage $date $prev $next "$dir" 
+    cp /tmp/story.txt   "$dir"
+    cp /tmp/photos.txt  "$dir"
+    if [ ! -z $verbose  ]; then ls -l "$dir" ; fi
 fi
 
 # That's all Folks!

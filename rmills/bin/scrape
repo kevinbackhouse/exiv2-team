@@ -2,8 +2,10 @@
 import sys
 from   bs4 import BeautifulSoup as Soup
 import ssl
-import urllib.request
 import argparse
+import io
+import gzip
+import urllib.request
 
 def scrape(argv):
 	options=['cols2','photos','img']
@@ -14,7 +16,7 @@ def scrape(argv):
 		print('usage: ' + sys.argv[0] + ' url','option')
 		print('options:',options)
 		sys.exit(1)
-	url    = argv[1]
+	url	   = argv[1]
 	option = argv[2]
 	
 	# print('url=',url,'option=',option)
@@ -26,7 +28,13 @@ def scrape(argv):
 	req = urllib.request.Request(url)
 	req.add_header('Accept', '*/*')
 	req.add_header('User-Agent','scrape')
-	page = urllib.request.urlopen(req, context=ctxt)
+	req.add_header('Accept-encoding', 'gzip')
+	response = urllib.request.urlopen(req,context=ctxt)
+	if response.getheader("Content-Encoding") == "gzip":
+		page = gzip.decompress(response.read())
+	else:
+		page = response.read().decode('utf-8')
+	
 	soup = Soup(page,features='lxml')
 	
 	try:
@@ -41,7 +49,7 @@ def scrape(argv):
 			images = soup.findAll('img')
 			for image in images:
 				url=image['src']
-				if len(url) > 120:  # ignore short urls, they are icons
+				if len(url) > 120:	# ignore short urls, they are icons
 					url = url.split('=')[0]+'=w1920-h1080';
 					print('<object data="'+url+'"></object>')
 		elif i == options.index('img'):
@@ -55,5 +63,5 @@ def scrape(argv):
 ##
 #
 if __name__ == '__main__':
-    scrape(sys.argv)
+	scrape(sys.argv)
 			

@@ -5,6 +5,12 @@ if [ $# != 2 ]; then
 fi
 path=$1
 address=$2
+if [ -e $address ]; then
+    address=$(realpath $address)
+    clanmills=$(realpath ~/clanmills)
+    address=${address:${#clanmills}}
+    echo "address = $address"
+fi
 echo "<script>window.location.replace(\"$address\");</script>" > $path
 
 # That's all Folks
