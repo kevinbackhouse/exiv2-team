@@ -1,0 +1,8 @@
+#/usr/bin/env bash
+
+if [ "$#" != "0" ]; then
+    echo "****" syntax: $0 "****"
+    exit 1
+fi
+cd ~/clanmills
+find ~/Pictures/Photos/ -type f -newer photos.db -print0 | xargs -0 readPhotos
