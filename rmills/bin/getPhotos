@@ -14,7 +14,7 @@ if [ ${#*} -gt 0 ]; then
     year=$(date +"%Y")
     dir=~/Pictures/$1
     if [ ! -d $dir ]; then
-        dir=~/Pictures/$year/$1
+        dir=~/Pictures/Photos/$year/$1
     fi
 else
 	echo "*** usage: getPhotos directory ***"
