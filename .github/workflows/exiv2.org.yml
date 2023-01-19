@@ -75,6 +75,7 @@ jobs:
 
           # Generate the final static content
           g++ $EXIV2WEB/bin/rssdate.cpp -o $EXIV2WEB/bin/rssdate
+          touch $EXIV2WEB/master/news.xml
           make -C $EXIV2WEB update
           make -C $EXIV2WEB
 
