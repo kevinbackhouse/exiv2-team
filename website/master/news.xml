@@ -2,6 +2,19 @@
 <news>
 
  <newsitem>
+  <date>2023-01-18</date>
+  <title>Exiv2 v0.27.6</title>
+  <abstract>Exiv2 v0.27.6</abstract>
+  <desc>
+   <p>Kudos to Miloš Komarčević, Robin Mills, Luis Díaz Más, Kevin Backhouse, Nehal J Wani, Peter S and Christoph Hass for working on the release.<br></br>   </p>
+   <ol>
+    <li>Minor bugs and fixes</li>
+   </ol>
+   <p>More details: <a href="https://github.com/Exiv2/exiv2/issues/2406#issuecomment-1383302378" _target="_blank">Change List</a></p>
+  </desc>
+ </newsitem>
+
+ <newsitem>
   <date>2021-10-22</date>
   <title>Exiv2 v0.27.5</title>
   <abstract>Exiv2 v0.27.5</abstract>
