@@ -56,7 +56,7 @@ jobs:
           echo -n ${{ matrix.EXIV2TAG }} | sed -e 's,-RC\([0-9]\),.\1,g' -e 's,v,,g' > $EXIV2WEB/var/__version__
 
           # Populate builds and releases
-          python3 -m pip install PyGithub
+          python3 -m pip install PyGithub 'pyopenssl>=22.0.0'
           python3 <<EOF | grep -v sha256 | grep -v nightly | grep -v untagged > /tmp/artifacts.txt
           from github import Github
 
