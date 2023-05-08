@@ -2,6 +2,22 @@
 <news>
 
  <newsitem>
+  <date>2023-05-08</date>
+  <title>Exiv2 v0.28.0</title>
+  <abstract>Exiv2 v0.28.0</abstract>
+  <desc>
+   <p>Kudos to Rosen Penev, Kevin Backhouse, Luis Díaz Más, Miloš Komarčević, Peter S, Robin Mills, Christoph Hass, Mohamed Ali Chebbi and other contributors for working on the release.<br></br>   </p>
+   <ol>
+       <li>Lots of security and bug fixes</li>
+       <li>C++ code improvements, move to C++17 and internal refactors</li>
+       <li>Video support</li>
+       <li>Meson build system support</li>
+   </ol>
+   <p>More details: <a href="https://github.com/Exiv2/exiv2/issues/2406#issuecomment-1529139799" _target="_blank">Change List</a></p>
+  </desc>
+ </newsitem>
+
+ <newsitem>
   <date>2023-01-18</date>
   <title>Exiv2 v0.27.6</title>
   <abstract>Exiv2 v0.27.6</abstract>
