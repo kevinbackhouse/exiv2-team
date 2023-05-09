@@ -31,7 +31,7 @@ __navbar__
 	  installation notes and further information.
 	</p>
 	<p class="text-center margin-top-s">
-          <a href="builds/exiv2-__version__-Source.tar.gz" class="btn btn-lg btn-success">
+          <a href="https://github.com/Exiv2/exiv2/archive/refs/tags/v__version__.tar.gz" class="btn btn-lg btn-success">
 	    <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp; Download Source
 	  </a>
 	</p>
