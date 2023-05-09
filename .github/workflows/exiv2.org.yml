@@ -47,9 +47,9 @@ jobs:
 
       - name: Build exiv2
         run: |
-          cmake -S$EXIV2HOME -B$EXIV2HOME/build -DEXIV2_ENABLE_BMFF=1 -DCMAKE_INSTALL_PREFIX=$EXIV2HOME/install
+          cmake -S$EXIV2HOME -B$EXIV2HOME/build -DEXIV2_ENABLE_BMFF=1 -DEXIV2_BUILD_SAMPLES=ON -DCMAKE_INSTALL_PREFIX=$EXIV2HOME/install
           cmake --build $EXIV2HOME/build -- install -j$(nproc)
-          make -C $EXIV2HOME/doc/templates
+          EXIV2_BINDIR=$EXIV2HOME/build/bin make -C $EXIV2HOME/doc/templates
 
       - name: Build exiv2.org static content
         run: |
