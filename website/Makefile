@@ -174,7 +174,7 @@ update: update-manpage update-intro update-sample update-conversion update-chang
 
 update-manpage:
 	@/usr/bin/env "MANPATH=$${EXIV2HOME}/man:$$MANPATH" man -t exiv2 | ps2pdf - html/exiv2-manpage.pdf
-	@man2html              $${EXIV2HOME}/man/man1/exiv2.1  | \
+	@man2html              $${EXIV2HOME}/exiv2.md  | \
 	sed -e s'_http://localhost/cgi-bin/man/man2html_/_g'     \
 	    -e s'_Manpage of EXIV2</TITLE>_<HTML>Manpage of EXIV2</TITLE><LINK href="manpage.css" REL="stylesheet" type="text/css">_' \
 	> var/__manpage__
