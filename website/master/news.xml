@@ -2,6 +2,19 @@
 <news>
 
  <newsitem>
+  <date>2023-05-14</date>
+  <title>Exiv2 v0.27.7</title>
+  <abstract>Exiv2 v0.27.7</abstract>
+  <desc>
+      <p>Kudos to Miloš Komarčević and Peter Kovář for their contributors on the release.<br></br>   </p>
+   <ol>
+    <li>Minor bugs and fixes</li>
+   </ol>
+   <p>More details: <a href="https://github.com/Exiv2/exiv2/pull/2567#issuecomment-1546701495" _target="_blank">Change List</a></p>
+  </desc>
+ </newsitem>
+
+ <newsitem>
   <date>2023-05-08</date>
   <title>Exiv2 v0.28.0</title>
   <abstract>Exiv2 v0.28.0</abstract>
