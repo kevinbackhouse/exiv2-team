@@ -2,6 +2,19 @@
 <news>
 
  <newsitem>
+  <date>2023-11-06</date>
+  <title>Exiv2 v0.28.1</title>
+  <abstract>Exiv2 v0.28.1</abstract>
+  <desc>
+   <ol>
+    <li>Minor bugs and fixes</li>
+    <li>Fix for CVE-2023-44398, an out-of-bounds write in BmffImage::brotliUncompress.</li>
+   </ol>
+   <p>More details: <a href="https://github.com/Exiv2/exiv2/issues/2813" _target="_blank">Change List</a></p>
+  </desc>
+ </newsitem>
+
+ <newsitem>
   <date>2023-05-14</date>
   <title>Exiv2 v0.27.7</title>
   <abstract>Exiv2 v0.27.7</abstract>
