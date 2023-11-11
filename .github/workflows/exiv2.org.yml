@@ -13,8 +13,8 @@ jobs:
   deploy:
     strategy:
       matrix:
-        EXIV2TAG: [v0.28.0]
-    runs-on: ubuntu-20.04
+        EXIV2TAG: [v0.28.1]
+    runs-on: ubuntu-22.04
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
