@@ -2,6 +2,20 @@
 <news>
 
  <newsitem>
+  <date>2024-02-13</date>
+  <title>Exiv2 v0.28.2</title>
+  <abstract>Exiv2 v0.28.2</abstract>
+  <desc>
+   <ol>
+    <li>Minor bugs and fixes</li>
+    <li>Fix for CVE-2024-24826: out-of-bounds read in QuickTimeVideo::NikonTagsDecoder.</li>
+    <li>Fix for CVE-2024-25112: denial of service due to unbounded recursion in QuickTimeVideo::multipleEntriesDecoder.</li>
+   </ol>
+   <p>More details: <a href="https://github.com/Exiv2/exiv2/issues/2914" _target="_blank">Change List</a></p>
+  </desc>
+ </newsitem>
+
+ <newsitem>
   <date>2023-11-06</date>
   <title>Exiv2 v0.28.1</title>
   <abstract>Exiv2 v0.28.1</abstract>
