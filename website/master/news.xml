@@ -2,6 +2,19 @@
 <news>
 
  <newsitem>
+  <date>2024-07-08</date>
+  <title>Exiv2 v0.28.3</title>
+  <abstract>Exiv2 v0.28.3</abstract>
+  <desc>
+   <ol>
+    <li>Minor bugs and fixes</li>
+    <li>Fix for CVE-2024-39695: out-of-bounds read in AsfVideo::streamProperties.</li>
+   </ol>
+   <p>More details: <a href="https://github.com/Exiv2/exiv2/issues/3008" _target="_blank">Change List</a></p>
+  </desc>
+ </newsitem>
+
+ <newsitem>
   <date>2024-02-13</date>
   <title>Exiv2 v0.28.2</title>
   <abstract>Exiv2 v0.28.2</abstract>
