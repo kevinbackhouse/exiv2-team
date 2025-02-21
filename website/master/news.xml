@@ -2,6 +2,19 @@
 <news>
 
  <newsitem>
+  <date>2025-02-21</date>
+  <title>Exiv2 v0.28.5</title>
+  <abstract>Exiv2 v0.28.5</abstract>
+  <desc>
+   <ol>
+    <li>Security fix</li>
+    <li>Fix for CVE-2025-26623: Use After Free in TiffSubIfd</li>
+   </ol>
+   <p>More details: <a href="https://github.com/Exiv2/exiv2/issues/3181" _target="_blank">Change List</a></p>
+  </desc>
+ </newsitem>
+
+ <newsitem>
   <date>2025-02-10</date>
   <title>Exiv2 v0.28.4</title>
   <abstract>Exiv2 v0.28.4</abstract>
