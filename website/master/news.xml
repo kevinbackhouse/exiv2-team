@@ -2,6 +2,20 @@
 <news>
 
  <newsitem>
+  <date>2025-08-29</date>
+  <title>Exiv2 v0.28.6</title>
+  <abstract>Exiv2 v0.28.6</abstract>
+  <desc>
+   <ol>
+    <li>Security fix</li>
+    <li>Fix for CVE-2025-54080: Out-of-bounds read in Exiv2::EpsImage::writeMetadata() via crafted EPS file</li>
+    <li>Fix for CVE-2025-55304: Quadratic performance in ICC profile parsing in JpegBase::readMetadata</li>
+   </ol>
+   <p>More details: <a href="https://github.com/Exiv2/exiv2/issues/3323" _target="_blank">Change List</a></p>
+  </desc>
+ </newsitem>
+
+ <newsitem>
   <date>2025-02-21</date>
   <title>Exiv2 v0.28.5</title>
   <abstract>Exiv2 v0.28.5</abstract>
