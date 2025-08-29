@@ -1,0 +1,742 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> <!--*- sgml -*-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="author" content="Andreas Huggel and Exiv2 contributors">
+  <meta name="description" content="Open Source Exif, IPTC and XMP metadata library and tools with Exif MakerNote and read/write support">
+  <meta name="keywords" content="exif, iptc, xmp, metadata, makernote, manipulation, manipulate, read and write, write, change, update, jpeg, jpg, ifd, image file directory, thumbnail, thumbnails, tag, tags, canon, fujifilm, sigma/foveon, nikon, open source, opensource, huggel, andreas, andreas huggel">
+  <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="manifest" href="/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <title>Exiv2 - Image metadata library and tools</title>
+  <!-- Doxygen styles -->
+  <link href="doxygen.css" rel="stylesheet" type="text/css">
+  <link href="customdoxygen.css" rel="stylesheet" type="text/css">
+  <!-- Bootstrap core CSS -->
+  <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap theme -->
+  <link href="../dist/css/bootstrap-theme.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../include/exiv2.css" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Custom script to bootstrap (augment) Doxygen-generated HTML -->
+<script type="text/javascript" src="doxy-boot.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img alt="Exiv2" src="../include/exiv2-logo-small.png">
+      </a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../getting-started.html">Getting started</a></li>
+        <li><a href="../download.html">Download</a></li>
+        <li><a href="../whatsnew.html">What's New</a></li>
+        <li><a href="../metadata.html">Metadata</a></li>
+        <li><a href="../makernote.html">Makernote</a></li>
+        <li><a href="../doc/examples.html">Examples</a></li>
+        <li><a href="../doc/index.html">API</a></li>
+        <li><a href="../manpage.html">Manual</a></li>
+        <li><a href="book/index.html">Book</a></li>
+        <li><a href="https://github.com/exiv2/exiv2" target="_blank">GitHub</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<div class="container">
+<div><!-- top -->
+<!-- Generated by Doxygen 1.9.8 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceExiv2.html">Exiv2</a></li><li class="navelem"><a class="el" href="classExiv2_1_1ImageFactory.html">ImageFactory</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
+<a href="classExiv2_1_1ImageFactory-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">Exiv2::ImageFactory Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Returns an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> instance of the specified type.  
+ <a href="classExiv2_1_1ImageFactory.html#details">More...</a></p>
+
+<p><code>#include &lt;image.hpp&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a7ecbfb64473a138152dce9a5b4cb9b8c" id="r_a7ecbfb64473a138152dce9a5b4cb9b8c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classExiv2_1_1BasicIo.html#ab316d94d3dedf2a569af5c6b7a2496c8">BasicIo::UniquePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#a7ecbfb64473a138152dce9a5b4cb9b8c">createIo</a> (const std::string &amp;path, bool useCurl=true)</td></tr>
+<tr class="memdesc:a7ecbfb64473a138152dce9a5b4cb9b8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the appropriate class type implemented <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> based on the protocol of the input.  <br /></td></tr>
+<tr class="separator:a7ecbfb64473a138152dce9a5b4cb9b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1412e83e334ea32e2a1301619eff39c" id="r_ac1412e83e334ea32e2a1301619eff39c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#ac1412e83e334ea32e2a1301619eff39c">open</a> (const std::string &amp;path, bool useCurl=true)</td></tr>
+<tr class="memdesc:ac1412e83e334ea32e2a1301619eff39c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the appropriate type by reading the specified file. Image type is derived from the file contents.  <br /></td></tr>
+<tr class="separator:ac1412e83e334ea32e2a1301619eff39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91d7e5d690766e33af1a03f8792cafe2" id="r_a91d7e5d690766e33af1a03f8792cafe2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#a91d7e5d690766e33af1a03f8792cafe2">open</a> (const <a class="el" href="namespaceExiv2.html#a40f58c4773587cae91a50aa0b3cf2ed3">byte</a> *data, size_t size)</td></tr>
+<tr class="memdesc:a91d7e5d690766e33af1a03f8792cafe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the appropriate type by reading the provided memory. Image type is derived from the memory contents.  <br /></td></tr>
+<tr class="separator:a91d7e5d690766e33af1a03f8792cafe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79f8768fbd0879f071f5022a2b944343" id="r_a79f8768fbd0879f071f5022a2b944343"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#a79f8768fbd0879f071f5022a2b944343">open</a> (<a class="el" href="classExiv2_1_1BasicIo.html#ab316d94d3dedf2a569af5c6b7a2496c8">BasicIo::UniquePtr</a> io)</td></tr>
+<tr class="memdesc:a79f8768fbd0879f071f5022a2b944343"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the appropriate type by reading the provided <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance. Image type is derived from the data provided by <em>io</em>. The passed in <em>io</em> instance is (re)opened by this method.  <br /></td></tr>
+<tr class="separator:a79f8768fbd0879f071f5022a2b944343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa542e2fa2aa8ea39c44c510448b98076" id="r_aa542e2fa2aa8ea39c44c510448b98076"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#aa542e2fa2aa8ea39c44c510448b98076">create</a> (<a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a> type, const std::string &amp;path)</td></tr>
+<tr class="memdesc:aa542e2fa2aa8ea39c44c510448b98076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the requested type by creating a new image file. If the file already exists, it will be overwritten.  <br /></td></tr>
+<tr class="separator:aa542e2fa2aa8ea39c44c510448b98076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59845ef3735eb62fd4642b4f49404d73" id="r_a59845ef3735eb62fd4642b4f49404d73"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#a59845ef3735eb62fd4642b4f49404d73">create</a> (<a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a> type)</td></tr>
+<tr class="memdesc:a59845ef3735eb62fd4642b4f49404d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the requested type by creating a new image in memory.  <br /></td></tr>
+<tr class="separator:a59845ef3735eb62fd4642b4f49404d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d457fb3d2deb16873ab77c1b2b472d9" id="r_a3d457fb3d2deb16873ab77c1b2b472d9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#a3d457fb3d2deb16873ab77c1b2b472d9">create</a> (<a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a> type, <a class="el" href="classExiv2_1_1BasicIo.html#ab316d94d3dedf2a569af5c6b7a2496c8">BasicIo::UniquePtr</a> io)</td></tr>
+<tr class="memdesc:a3d457fb3d2deb16873ab77c1b2b472d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the requested type by writing a new image to a <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance. If the <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance already contains data, it will be overwritten.  <br /></td></tr>
+<tr class="separator:a3d457fb3d2deb16873ab77c1b2b472d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7194be8fc7fc771667b5ab497c895a90" id="r_a7194be8fc7fc771667b5ab497c895a90"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#a7194be8fc7fc771667b5ab497c895a90">getType</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a7194be8fc7fc771667b5ab497c895a90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the image type of the provided file.  <br /></td></tr>
+<tr class="separator:a7194be8fc7fc771667b5ab497c895a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a161f3f2e2840c573f98beeea4a90b6c1" id="r_a161f3f2e2840c573f98beeea4a90b6c1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#a161f3f2e2840c573f98beeea4a90b6c1">getType</a> (const <a class="el" href="namespaceExiv2.html#a40f58c4773587cae91a50aa0b3cf2ed3">byte</a> *data, size_t size)</td></tr>
+<tr class="memdesc:a161f3f2e2840c573f98beeea4a90b6c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the image type of the provided data buffer.  <br /></td></tr>
+<tr class="separator:a161f3f2e2840c573f98beeea4a90b6c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9e2546b652f356de25d5975612dde5a" id="r_ab9e2546b652f356de25d5975612dde5a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#ab9e2546b652f356de25d5975612dde5a">getType</a> (<a class="el" href="classExiv2_1_1BasicIo.html">BasicIo</a> &amp;io)</td></tr>
+<tr class="memdesc:ab9e2546b652f356de25d5975612dde5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the image type of data provided by a <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance. The passed in <em>io</em> instance is (re)opened by this method.  <br /></td></tr>
+<tr class="separator:ab9e2546b652f356de25d5975612dde5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adea384b4c96e56ba03983bdc02484e7f" id="r_adea384b4c96e56ba03983bdc02484e7f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceExiv2.html#af5f0ea6c944c786f7c4c4841fa22b16c">AccessMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#adea384b4c96e56ba03983bdc02484e7f">checkMode</a> (<a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a> type, <a class="el" href="namespaceExiv2.html#acca494c8cf80f3ac8a804e1b54afffca">MetadataId</a> metadataId)</td></tr>
+<tr class="memdesc:adea384b4c96e56ba03983bdc02484e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the access mode or supported metadata functions for an image type and a metadata type.  <br /></td></tr>
+<tr class="separator:adea384b4c96e56ba03983bdc02484e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae870682ffb34faef80056f550158b462" id="r_ae870682ffb34faef80056f550158b462"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExiv2_1_1ImageFactory.html#ae870682ffb34faef80056f550158b462">checkType</a> (<a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a> type, <a class="el" href="classExiv2_1_1BasicIo.html">BasicIo</a> &amp;io, bool advance)</td></tr>
+<tr class="memdesc:ae870682ffb34faef80056f550158b462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if the content of <em>io</em> is an image of <em>type</em>.  <br /></td></tr>
+<tr class="separator:ae870682ffb34faef80056f550158b462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a91ad91066460efe874f533ed2dd6a18c" id="r_a91ad91066460efe874f533ed2dd6a18c"><td class="memItemLeft" align="right" valign="top"><a id="a91ad91066460efe874f533ed2dd6a18c" name="a91ad91066460efe874f533ed2dd6a18c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Image::good</b> () const</td></tr>
+<tr class="separator:a91ad91066460efe874f533ed2dd6a18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Returns an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> instance of the specified type. </p>
+<p>The factory is implemented as a static class. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="adea384b4c96e56ba03983bdc02484e7f" name="adea384b4c96e56ba03983bdc02484e7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adea384b4c96e56ba03983bdc02484e7f">&#9670;&#160;</a></span>checkMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespaceExiv2.html#af5f0ea6c944c786f7c4c4841fa22b16c">AccessMode</a> Exiv2::ImageFactory::checkMode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceExiv2.html#acca494c8cf80f3ac8a804e1b54afffca">MetadataId</a>&#160;</td>
+          <td class="paramname"><em>metadataId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the access mode or supported metadata functions for an image type and a metadata type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The image type. </td></tr>
+    <tr><td class="paramname">metadataId</td><td>The metadata identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Access mode for the requested image type and metadata identifier. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Error(kerUnsupportedImageType)</td><td>if the image type is not supported. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae870682ffb34faef80056f550158b462" name="ae870682ffb34faef80056f550158b462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae870682ffb34faef80056f550158b462">&#9670;&#160;</a></span>checkType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Exiv2::ImageFactory::checkType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classExiv2_1_1BasicIo.html">BasicIo</a> &amp;&#160;</td>
+          <td class="paramname"><em>io</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>advance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determine if the content of <em>io</em> is an image of <em>type</em>. </p>
+<p>The <em>advance</em> flag determines if the read position in the stream is moved (see below). This applies only if the type matches and the function returns true. If the type does not match, the stream position is not changed. However, if reading from the stream fails, the stream position is undefined. Consult the stream state to obtain more information in this case.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Type of the image. </td></tr>
+    <tr><td class="paramname">io</td><td><a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance to read from. </td></tr>
+    <tr><td class="paramname">advance</td><td>Flag indicating whether the position of the io should be advanced by the number of characters read to analyse the data (true) or left at its original position (false). This applies only if the type matches. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the data matches the type of this class;<br  />
+ false if the data does not match </dd></dl>
+
+</div>
+</div>
+<a id="a59845ef3735eb62fd4642b4f49404d73" name="a59845ef3735eb62fd4642b4f49404d73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59845ef3735eb62fd4642b4f49404d73">&#9670;&#160;</a></span>create() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a> Exiv2::ImageFactory::create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the requested type by creating a new image in memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Type of the image to be created. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An auto-pointer that owns an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> instance of the requested type. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classExiv2_1_1Error.html" title="Simple error class used for exceptions. An output operator is provided to print errors to a stream.">Error</a></td><td>If the image type is not supported </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3d457fb3d2deb16873ab77c1b2b472d9" name="a3d457fb3d2deb16873ab77c1b2b472d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d457fb3d2deb16873ab77c1b2b472d9">&#9670;&#160;</a></span>create() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a> Exiv2::ImageFactory::create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classExiv2_1_1BasicIo.html#ab316d94d3dedf2a569af5c6b7a2496c8">BasicIo::UniquePtr</a>&#160;</td>
+          <td class="paramname"><em>io</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the requested type by writing a new image to a <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance. If the <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance already contains data, it will be overwritten. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Type of the image to be created. </td></tr>
+    <tr><td class="paramname">io</td><td>An auto-pointer that owns a <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance that will be written to when creating a new image. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method takes ownership of the passed in <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance through the auto-pointer. Callers should not continue to use the <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance after it is passed to this method. Use the <a class="el" href="classExiv2_1_1Image.html#a9b7b615d32c4a048138b725bf5cda826" title="Return a reference to the BasicIo instance being used for Io.">Image::io()</a> method to get a temporary reference. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An auto-pointer that owns an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> instance of the requested type. If the image type is not supported, the pointer is 0. </dd></dl>
+
+</div>
+</div>
+<a id="aa542e2fa2aa8ea39c44c510448b98076" name="aa542e2fa2aa8ea39c44c510448b98076"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa542e2fa2aa8ea39c44c510448b98076">&#9670;&#160;</a></span>create() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a> Exiv2::ImageFactory::create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the requested type by creating a new image file. If the file already exists, it will be overwritten. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Type of the image to be created. </td></tr>
+    <tr><td class="paramname">path</td><td>Image file to create. File extension is ignored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An auto-pointer that owns an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> instance of the requested type. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classExiv2_1_1Error.html" title="Simple error class used for exceptions. An output operator is provided to print errors to a stream.">Error</a></td><td>If the image type is not supported. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7ecbfb64473a138152dce9a5b4cb9b8c" name="a7ecbfb64473a138152dce9a5b4cb9b8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ecbfb64473a138152dce9a5b4cb9b8c">&#9670;&#160;</a></span>createIo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classExiv2_1_1BasicIo.html#ab316d94d3dedf2a569af5c6b7a2496c8">BasicIo::UniquePtr</a> Exiv2::ImageFactory::createIo </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>useCurl</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create the appropriate class type implemented <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> based on the protocol of the input. </p>
+<p>"-" path implies the data from stdin and it is handled by StdinIo. Http path can be handled by either <a class="el" href="classExiv2_1_1HttpIo.html" title="Provides the http read/write access for the RemoteIo.">HttpIo</a> or CurlIo. Https, ftp paths are handled by CurlIo. Ssh, sftp paths are handled by SshIo. Others are handled by FileIo.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Image file. </td></tr>
+    <tr><td class="paramname">useCurl</td><td>Indicate whether the libcurl is used or not. If it's true, http is handled by CurlIo. Otherwise it is handled by <a class="el" href="classExiv2_1_1HttpIo.html" title="Provides the http read/write access for the RemoteIo.">HttpIo</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An auto-pointer that owns an <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classExiv2_1_1Error.html" title="Simple error class used for exceptions. An output operator is provided to print errors to a stream.">Error</a></td><td>If the file is not found or it is unable to connect to the server to read the remote file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab9e2546b652f356de25d5975612dde5a" name="ab9e2546b652f356de25d5975612dde5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9e2546b652f356de25d5975612dde5a">&#9670;&#160;</a></span>getType() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a> Exiv2::ImageFactory::getType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classExiv2_1_1BasicIo.html">BasicIo</a> &amp;&#160;</td>
+          <td class="paramname"><em>io</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the image type of data provided by a <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance. The passed in <em>io</em> instance is (re)opened by this method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">io</td><td>A <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance that provides image data. The contents of the image data are tested to determine the type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Image type or Image::none if the type is not recognized. </dd></dl>
+
+</div>
+</div>
+<a id="a161f3f2e2840c573f98beeea4a90b6c1" name="a161f3f2e2840c573f98beeea4a90b6c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a161f3f2e2840c573f98beeea4a90b6c1">&#9670;&#160;</a></span>getType() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a> Exiv2::ImageFactory::getType </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceExiv2.html#a40f58c4773587cae91a50aa0b3cf2ed3">byte</a> *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the image type of the provided data buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer to a data buffer containing an image. The contents of the memory are tested to determine the image type. </td></tr>
+    <tr><td class="paramname">size</td><td>Number of bytes pointed to by <em>data</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Image type or Image::none if the type is not recognized. </dd></dl>
+
+</div>
+</div>
+<a id="a7194be8fc7fc771667b5ab497c895a90" name="a7194be8fc7fc771667b5ab497c895a90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7194be8fc7fc771667b5ab497c895a90">&#9670;&#160;</a></span>getType() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespaceExiv2.html#aa1b3cd59cb79b21263e2b1fe43796412">ImageType</a> Exiv2::ImageFactory::getType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the image type of the provided file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Image file. The contents of the file are tested to determine the image type. File extension is ignored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Image type or Image::none if the type is not recognized. </dd></dl>
+
+</div>
+</div>
+<a id="a79f8768fbd0879f071f5022a2b944343" name="a79f8768fbd0879f071f5022a2b944343"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79f8768fbd0879f071f5022a2b944343">&#9670;&#160;</a></span>open() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a> Exiv2::ImageFactory::open </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classExiv2_1_1BasicIo.html#ab316d94d3dedf2a569af5c6b7a2496c8">BasicIo::UniquePtr</a>&#160;</td>
+          <td class="paramname"><em>io</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the appropriate type by reading the provided <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance. Image type is derived from the data provided by <em>io</em>. The passed in <em>io</em> instance is (re)opened by this method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">io</td><td>An auto-pointer that owns a <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance that provides image data. The contents of the image data are tested to determine the type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method takes ownership of the passed in <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance through the auto-pointer. Callers should not continue to use the <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> instance after it is passed to this method. Use the <a class="el" href="classExiv2_1_1Image.html#a9b7b615d32c4a048138b725bf5cda826" title="Return a reference to the BasicIo instance being used for Io.">Image::io()</a> method to get a temporary reference. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An auto-pointer that owns an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> instance whose type matches that of the <em>io</em> data. If no image type could be determined, the pointer is 0. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classExiv2_1_1Error.html" title="Simple error class used for exceptions. An output operator is provided to print errors to a stream.">Error</a></td><td>If opening the <a class="el" href="classExiv2_1_1BasicIo.html" title="An interface for simple binary IO.">BasicIo</a> fails </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a91d7e5d690766e33af1a03f8792cafe2" name="a91d7e5d690766e33af1a03f8792cafe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91d7e5d690766e33af1a03f8792cafe2">&#9670;&#160;</a></span>open() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a> Exiv2::ImageFactory::open </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceExiv2.html#a40f58c4773587cae91a50aa0b3cf2ed3">byte</a> *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the appropriate type by reading the provided memory. Image type is derived from the memory contents. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer to a data buffer containing an image. The contents of the memory are tested to determine the image type. </td></tr>
+    <tr><td class="paramname">size</td><td>Number of bytes pointed to by <em>data</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An auto-pointer that owns an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> instance whose type matches that of the data buffer. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classExiv2_1_1Error.html" title="Simple error class used for exceptions. An output operator is provided to print errors to a stream.">Error</a></td><td>If the memory contains data of an unknown image type. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac1412e83e334ea32e2a1301619eff39c" name="ac1412e83e334ea32e2a1301619eff39c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1412e83e334ea32e2a1301619eff39c">&#9670;&#160;</a></span>open() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classExiv2_1_1Image.html#ae19135d23c1bfb24aa08d2704cc59702">Image::UniquePtr</a> Exiv2::ImageFactory::open </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>useCurl</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> subclass of the appropriate type by reading the specified file. Image type is derived from the file contents. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Image file. The contents of the file are tested to determine the image type. File extension is ignored. </td></tr>
+    <tr><td class="paramname">useCurl</td><td>Indicate whether the libcurl is used or not. If it's true, http is handled by CurlIo. Otherwise it is handled by <a class="el" href="classExiv2_1_1HttpIo.html" title="Provides the http read/write access for the RemoteIo.">HttpIo</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An auto-pointer that owns an <a class="el" href="classExiv2_1_1Image.html" title="Abstract base class defining the interface for an image. This is the top-level interface to the Exiv2...">Image</a> instance whose type matches that of the file. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classExiv2_1_1Error.html" title="Simple error class used for exceptions. An output operator is provided to print errors to a stream.">Error</a></td><td>If opening the file fails or it contains data of an unknown image type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="addmoddel_8cpp-example.html#a21">addmoddel.cpp</a>, <a class="el" href="exifcomment_8cpp-example.html#a2">exifcomment.cpp</a>, <a class="el" href="exifdata_8cpp-example.html#a5">exifdata.cpp</a>, <a class="el" href="exifprint_8cpp-example.html#a10">exifprint.cpp</a>, <a class="el" href="exifvalue_8cpp-example.html#a2">exifvalue.cpp</a>, <a class="el" href="geotag_8cpp-example.html#a4">geotag.cpp</a>, <a class="el" href="iptceasy_8cpp-example.html#a5">iptceasy.cpp</a>, <a class="el" href="iptcprint_8cpp-example.html#a2">iptcprint.cpp</a>, <a class="el" href="metacopy_8cpp-example.html#a2">metacopy.cpp</a>, <a class="el" href="mrwthumb_8cpp-example.html#a2">mrwthumb.cpp</a>, and <a class="el" href="xmpprint_8cpp-example.html#a2">xmpprint.cpp</a>.</dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><b>image.hpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- /.container -->
+<div id="footer">
+  <footer>
+    <div class="container">
+      <div class="row">
+       <div class="page-footer">
+        <div class="col-sm-5">
+          Exiv2 v0.28.6
+        </div><!-- /.col-sm-5 -->
+        <div class="col-sm-2"></div><!-- /.col-sm-2 -->
+        <div class="col-sm-5">
+          <span class="visible-xs-block text-center"><p>Last modified 2025-08-29 18:31 UTC</p></span>
+          <span class="hidden-xs pull-right"><p>Last modified 2025-08-29 18:31 UTC</p></span>
+        </div><!-- /.col-sm-5 -->
+       </div>
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </footer>
+</div><!-- closes footer -->
+</body>
+</html>
